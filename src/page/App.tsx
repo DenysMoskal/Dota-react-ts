@@ -1,12 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AllHeroPage from "./AllHeroPage";
+
+import Navigatin from "@/components/Navigatin";
+import AllHero from "./AllHero";
+import InfoCard from "@/page/InfoCard";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<AllHeroPage />} />
-    </Routes>
+    <>
+      <Navigatin />
+      <Routes>
+        <Route path="/" element={<AllHero />} />
+        <Route path="/hero/:id" element={<InfoCard />} />
+      </Routes>
+    </>
   );
 };
 

@@ -23,7 +23,9 @@
       "@store/*": ["store/*"],
       "@fetch/*": ["fetch/*"],
       "@modules/*": ["modules/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@image/*": ["image/*"],
+      "@data/*": ["data/*"]
     }
   },
 

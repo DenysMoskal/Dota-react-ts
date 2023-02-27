@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { fetchHeroes } from "../../fetch/fetchHeroes";
+import { fetchHeroes, fetchHeroInfo } from "../../fetch/fetchHeroes";
 import { Hero } from "@modules/modulesHeroes";
 
 export const fetchHeroesData = createAsyncThunk(

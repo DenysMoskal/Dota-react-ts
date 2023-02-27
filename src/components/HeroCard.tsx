@@ -1,5 +1,6 @@
 import { Hero } from "@/modules/modulesHeroes";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroCard: React.FC<Hero> = ({
   localized_name,
@@ -7,6 +8,7 @@ const HeroCard: React.FC<Hero> = ({
   attack_type,
   primary_attr,
   roles,
+  id,
 }) => {
   let color;
   let text;
@@ -24,8 +26,6 @@ const HeroCard: React.FC<Hero> = ({
   const nameStyle = {
     color: color,
   };
-
-  console.log(roles);
 
   return (
     <li className="relative mr-4 mt-4 bg-white border border-grey-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-w-[256px]">
@@ -57,9 +57,11 @@ const HeroCard: React.FC<Hero> = ({
           </h3>
         </div>
       }
-      <button className="border-2 rounded bg-black text-white py-2 px-4 absolute bottom-0 w-full hover:bg-slate-600">
-        More Info
-      </button>
+      <Link to={`/hero/${id}`}>
+        <button className="border-2 rounded bg-slate-300 text-black py-2 px-4 absolute bottom-0 w-full hover:bg-red-400">
+          More Info
+        </button>
+      </Link>
     </li>
   );
 };

@@ -25,3 +25,18 @@ export interface Hero {
   cm_enabled: boolean;
   legs: number;
 }
+
+export interface InfoHero {
+  account_id: number;
+  assists: number;
+  deaths: number;
+  duration: number;
+  kills: number;
+  league_name: string;
+  leagueid: number;
+  match_id: number;
+  player_slot: number;
+  radiant: boolean;
+  radiant_win: boolean;
+  start_time: number;
+}
