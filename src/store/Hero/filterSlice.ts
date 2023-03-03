@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type typeInitialState = {
   activeCategory: number;
@@ -12,7 +12,7 @@ export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setActiveCategory: (state, action) => {
+    setActiveCategory: (state, action: PayloadAction<number>) => {
       state.activeCategory = action.payload;
     },
   },

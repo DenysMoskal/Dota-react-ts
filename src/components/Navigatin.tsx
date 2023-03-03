@@ -8,7 +8,6 @@ const Navigatin = () => {
     <div className="container mx-auto shadow">
       <nav className="flex justify-between items-center h-[60px] px-5  bg-slate-300 ">
         <img className="max-w-[50px] " src={dotaIcon} alt="Dota Icon" />
-        <h3 className="font-bold text-red-500">Dota INFO</h3>
 
         <span className="text-lg">
           <Link className="mr-3 hover:text-red-500 hover:fz-22" to="/">

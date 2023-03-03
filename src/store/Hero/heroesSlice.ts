@@ -12,14 +12,14 @@ export const fetchHeroesData = createAsyncThunk(
 
 interface HeroesState {
   data: Hero[];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
+  loading: boolean;
+  error: boolean;
 }
 
 const initialState: HeroesState = {
   data: [],
-  status: "idle",
-  error: null,
+  loading: false,
+  error: false,
 };
 
 const heroesSlice = createSlice({
@@ -29,17 +29,22 @@ const heroesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchHeroesData.pending, (state) => {
-        state.status = "loading";
+        state.data = [];
+        state.loading = true;
+        state.error = false;
       })
       .addCase(
         fetchHeroesData.fulfilled,
         (state, action: PayloadAction<Hero[]>) => {
-          state.status = "succeeded";
           state.data = action.payload;
+          state.loading = false;
+          state.error = false;
         }
       )
       .addCase(fetchHeroesData.rejected, (state) => {
-        state.status = "failed";
+        state.data = [];
+        state.loading = false;
+        state.error = true;
       });
   },
 });
