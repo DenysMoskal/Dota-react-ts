@@ -1,18 +1,16 @@
+import { itemType } from "@/components/AllHero/HeroCard";
 import { initialStateFavoriteType } from "@/store/Hero/fevoriteSlice";
 
 export const getLocalStorage = (key: string) => {
   const data = localStorage.getItem(key);
 
-  if (data) {
-    return JSON.parse(data);
+  if (data === null) {
+    return [];
   }
 
-  return [];
+  return JSON.parse(data);
 };
 
-export const setLocalStorage = (
-  key: string,
-  data: initialStateFavoriteType
-) => {
+export const setLocalStorage = (key: string, data: itemType) => {
   localStorage.setItem(key, JSON.stringify(data));
 };

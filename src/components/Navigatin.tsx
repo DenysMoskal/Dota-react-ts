@@ -11,9 +11,12 @@ const Navigatin = () => {
 
         <span className="text-lg">
           <Link className="mr-3 hover:text-red-500 hover:fz-22" to="/">
-            Main
+            Heroes
           </Link>
-          <Link className="hover:text-red-500" to="/favorite">
+          <Link className="mr-3 hover:text-red-500 hover:fz-22" to="/match">
+            Match
+          </Link>
+          <Link className="mr-3 hover:text-red-500 hover:fz-22" to="/favorite">
             Favorite
           </Link>
         </span>

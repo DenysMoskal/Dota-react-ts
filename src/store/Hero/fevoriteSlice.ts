@@ -3,11 +3,11 @@ import { itemType } from "@/components/AllHero/HeroCard";
 import { getLocalStorage } from "@/utils/localStorage";
 
 export interface initialStateFavoriteType {
-  favorite: itemType[];
+  favorite: itemType[] | any;
 }
 
 const initialState: initialStateFavoriteType = {
-  favorite: [],
+  favorite: getLocalStorage("store"),
 };
 
 export const favoriteSlice = createSlice({
@@ -19,7 +19,7 @@ export const favoriteSlice = createSlice({
     },
     removeFromFavorite: (state, action: PayloadAction<number>) => {
       state.favorite = state.favorite.filter(
-        (item) => item.id !== action.payload
+        (item: itemType) => item.id !== action.payload
       );
     },
     clearFavorite: (state) => {

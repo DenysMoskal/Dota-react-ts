@@ -48,7 +48,7 @@ const HeroCard: React.FC<Hero> = ({
 
   const { favorite } = useSelector((state: RootState) => state.favorite);
 
-  const isFavortie = favorite.some((fav) => fav.id === item.id);
+  const isFavortie = favorite.some((fav: itemType) => fav.id === item.id);
 
   const toggleFavorite = () => {
     if (isFavortie) {

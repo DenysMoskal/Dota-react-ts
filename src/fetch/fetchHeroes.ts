@@ -5,7 +5,7 @@ import { Hero, InfoHero } from "@modules/modulesHeroes";
 export const fetchHeroes = async (): Promise<Hero[]> => {
   try {
     const response = await axios.get<Hero[]>(
-      "https://api.opendota.com/api/heroes?limit=10"
+      "https://api.opendota.com/api/heroes"
     );
     return response.data;
   } catch (error) {

@@ -7,6 +7,7 @@ import FavCard from "@/components/FavoriteCard/FavCard";
 import FavoriteEmpty from "@/components/FavoriteCard/FavoriteEmpty";
 import { useDispatch } from "react-redux";
 import { clearFavorite } from "@/store/Hero/fevoriteSlice";
+import { itemType } from "@/components/AllHero/HeroCard";
 
 const FavoriteCard: React.FC = () => {
   const { favorite } = useSelector((state: RootState) => state.favorite);
@@ -22,7 +23,7 @@ const FavoriteCard: React.FC = () => {
         Favorite heroes:
       </h1>
       <ul>
-        {favorite.map((item) => (
+        {favorite.map((item: itemType) => (
           <FavCard key={item.id} {...item} />
         ))}
       </ul>

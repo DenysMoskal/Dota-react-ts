@@ -17,8 +17,6 @@ const InfoAvg: React.FC<infoAvgType> = ({
   deathsAvg,
   assistsAvg,
   durationAvg,
-  winsCount,
-  loosCount,
   winRate,
 }) => {
   const dispatch = useDispatch();
@@ -45,6 +43,9 @@ const InfoAvg: React.FC<infoAvgType> = ({
       id: 3,
     },
   ];
+  if (!killsAvg) {
+    return <h1>Loaading...</h1>;
+  }
 
   return (
     <div>
@@ -78,28 +79,38 @@ const InfoAvg: React.FC<infoAvgType> = ({
       </div>
 
       <ul>
-        <li className="text-slate-200 pl-4 pt-[2px]">
-          Win Rate :{" "}
-          <span
-            className={winRateClear < 50 ? "text-red-400" : "text-green-600"}
-          >
-            {winRateClear}%
-          </span>
-        </li>
-        <li className="text-slate-200 pl-4 pt-[2px]">
-          Kiils average : <span className="text-green-600">{killsAvg}</span>
-        </li>
-        <li className="text-slate-200 pl-4 pt-[2px]">
-          Deaths average : <span className="text-red-400">{deathsAvg}</span>
-        </li>
-        <li className="text-slate-200 pl-4 pt-[2px]">
-          Assists average :{" "}
-          <span className="text-yellow-200">{assistsAvg}</span>
-        </li>
-        <li className="text-slate-200 pl-4 pt-[2px]">
-          Duratuins average :{" "}
-          <span className="underline">{durationAvgClear}</span> min
-        </li>
+        {winRateClear && (
+          <li className="text-slate-200 pl-4 pt-[2px]">
+            Win Rate :{" "}
+            <span
+              className={winRateClear < 50 ? "text-red-400" : "text-green-600"}
+            >
+              {winRateClear}%
+            </span>
+          </li>
+        )}
+        {killsAvg && (
+          <li className="text-slate-200 pl-4 pt-[2px]">
+            Kiils average : <span className="text-green-600">{killsAvg}</span>
+          </li>
+        )}
+        {deathsAvg && (
+          <li className="text-slate-200 pl-4 pt-[2px]">
+            Deaths average : <span className="text-red-400">{deathsAvg}</span>
+          </li>
+        )}
+        {assistsAvg && (
+          <li className="text-slate-200 pl-4 pt-[2px]">
+            Assists average :{" "}
+            <span className="text-yellow-200">{assistsAvg}</span>
+          </li>
+        )}
+        {durationAvgClear && (
+          <li className="text-slate-200 pl-4 pt-[2px]">
+            Duratuins average :{" "}
+            <span className="underline">{durationAvgClear}</span> min
+          </li>
+        )}
       </ul>
     </div>
   );
