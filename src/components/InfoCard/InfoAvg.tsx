@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { changeCount } from "@/store/Hero/infoSlice";
+import Loader from "../Loader";
 
 interface infoAvgType {
   killsAvg: number;
@@ -44,7 +45,7 @@ const InfoAvg: React.FC<infoAvgType> = ({
     },
   ];
   if (!killsAvg) {
-    return <h1>Loaading...</h1>;
+    return <Loader />;
   }
 
   return (

@@ -7,7 +7,7 @@ interface HeroesState {
   info: InfoHero[];
   count: number;
   loading: boolean;
-  error: boolean;
+  error: string | null;
 }
 
 export const fetchInfoHeroData = createAsyncThunk(
@@ -24,7 +24,7 @@ const initialState: HeroesState = {
   info: [],
   count: 10,
   loading: false,
-  error: false,
+  error: null,
 };
 
 const infoSlice = createSlice({
@@ -39,20 +39,20 @@ const infoSlice = createSlice({
     builder
       .addCase(fetchInfoHeroData.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(
         fetchInfoHeroData.fulfilled,
         (state, action: PayloadAction<InfoHero[]>) => {
           state.loading = false;
-          state.error = false;
+          state.error = null;
           state.info = action.payload;
         }
       )
-      .addCase(fetchInfoHeroData.rejected, (state) => {
+      .addCase(fetchInfoHeroData.rejected, (state, action) => {
         state.info = [];
         state.loading = false;
-        state.error = true;
+        state.error = action.error.message || "An error occurred.";
       });
   },
 });

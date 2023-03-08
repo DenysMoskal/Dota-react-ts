@@ -13,13 +13,13 @@ export const fetchMatchData = createAsyncThunk(
 interface MatchState {
   data: Match;
   loading: boolean;
-  error: boolean;
+  error: string | null;
 }
 
 const initialState: MatchState = {
   data: {},
   loading: false,
-  error: false,
+  error: null,
 };
 
 const matchSlice = createSlice({
@@ -31,20 +31,20 @@ const matchSlice = createSlice({
       .addCase(fetchMatchData.pending, (state) => {
         state.data = {};
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(
         fetchMatchData.fulfilled,
         (state, action: PayloadAction<Match | {}>) => {
           state.data = action.payload;
           state.loading = false;
-          state.error = false;
+          state.error = null;
         }
       )
-      .addCase(fetchMatchData.rejected, (state) => {
+      .addCase(fetchMatchData.rejected, (state, action) => {
         state.data = {};
         state.loading = false;
-        state.error = true;
+        state.error = action.error.message || "An error occurred.";
       });
   },
 });

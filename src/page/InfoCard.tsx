@@ -11,6 +11,8 @@ import { whoWin } from "@/utils/whoWin";
 import { average } from "@/utils/average";
 import { secondsToMinutes } from "@/utils/secondsToMinutes";
 import InfoAvg from "@/components/InfoCard/InfoAvg";
+import Error from "@/components/Error";
+import Loader from "@/components/Loader";
 
 type dataHeroType = Hero | undefined;
 
@@ -53,7 +55,7 @@ const InfoCard = () => {
   const durationAvg = secondsToMinutes(average(duration, duration.length));
 
   if (error || errorIMG) {
-    return <div>Error</div>;
+    return <Error error={error || errorIMG} />;
   }
 
   return (
@@ -80,7 +82,7 @@ const InfoCard = () => {
             <InfoGame key={item.match_id} {...item} />
           ))}
         </div>
-        {loading && <div>Loading...</div>}
+        {loading && <Loader />}
       </div>
     </>
   );

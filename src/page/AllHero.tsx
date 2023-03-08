@@ -7,6 +7,8 @@ import HeroCard from "@/components/AllHero/HeroCard";
 import Categories from "@/components/AllHero/Categories";
 import Input from "@/components/AllHero/Input";
 import useDebounce from "@/hooks/Debounce";
+import Error from "@/components/Error";
+import Loader from "@/components/Loader";
 
 const AllHero: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,8 +29,10 @@ const AllHero: React.FC = () => {
 
   const debouncedValue = useDebounce<string>(value, 500);
 
+  console.log(error, "error");
+
   if (error) {
-    return <div>Error</div>;
+    return <Error error={error} />;
   }
 
   return (
@@ -53,7 +57,7 @@ const AllHero: React.FC = () => {
               <HeroCard key={item.id} {...item} />
             ))}
         </ul>
-        {loading && <div>Loading...</div>}
+        {loading && <Loader />}
       </div>
     </div>
   );
