@@ -5,7 +5,7 @@ interface InputMatchType {
 }
 
 const InputMatch: React.FC<InputMatchType> = ({ setId }) => {
-  const [inputValue, setInputValue] = React.useState("7045221911");
+  const [inputValue, setInputValue] = React.useState("");
 
   return (
     <>

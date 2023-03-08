@@ -29,8 +29,6 @@ const AllHero: React.FC = () => {
 
   const debouncedValue = useDebounce<string>(value, 500);
 
-  console.log(error, "error");
-
   if (error) {
     return <Error error={error} />;
   }
